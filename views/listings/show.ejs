@@ -1,25 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Airbnb</title>
-</head>
-<body>
+<% layout('layouts/boilerplate') %>
+<div class="row mt-3">
+  <div class="col-8 offset-3">
     <h3>Listing Details :</h3>
-    <ul>
-        <li>Title : <%= listing.title %></li>
-        <li>Description : <%= listing.description %></li>
-        <li>Price : &#8377;<%= listing.price.toLocaleString("en-IN") %> </li>
-        <li>Location : <%= listing.location %></li>
-        <li>Country : <%= listing.country %></li>
-    </ul>
-    <br>
-    <a href="/listings/<%= listing._id %>/edit">Edit this listing</a>
-    <br><br>
+  </div>
+  <div class="card col-6 offset-3 show-card">
+    <img
+      src="<%= listing.image.url %>"
+      class="card-img-top show-img"
+      alt="Listing Image"
+    />
+    <div class="card-body">
+      <p class="card-text">
+        <b><%= listing.title %></b><br />
+        <%= listing.description %><br />
+        &#8377;<%= listing.price.toLocaleString("en-IN") %> per night<br />
+        <%= listing.location %><br />
+        <%= listing.country %>
+      </p>
+    </div>
+  </div>
+  <br />
+  <div class="btns">
+    <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-1 offset-3 edit-btn">Edit</a>
     <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
-        <button>Delete this listing</button>
-    </form>    
-    
-</body>
-</html>
+      <button class="btn btn-dark  offset-5 ">Delete</button>
+    </form>
+  </div>
+  
+</div>
