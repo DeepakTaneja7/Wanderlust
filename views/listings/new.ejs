@@ -1,9 +1,9 @@
 <% layout('layouts/boilerplate') %>
 <div class="row mt-3">
   <div class="col-8 offset-2">
-    <br><br>
+    <br /><br />
     <h3>Create New Listing</h3>
-    <form method="POST" action="/listings">
+    <form method="POST" action="/listings" novalidate class="needs-validation">
       <div class="mb-3">
         <label for="title" class="form-label">Title : </label>
         <input
@@ -12,7 +12,10 @@
           id="title"
           class="form-control"
           placeholder="Add a catchy title"
+          required
         />
+        <div class="valid-feedback">Title Looks good!</div>
+        <div class="invalid-feedback">Please enter a title.</div>
       </div>
       <div class="mb-3">
         <label for="description" class="form-label">Description : </label>
@@ -23,7 +26,10 @@
           rows="2"
           class="form-control"
           placeholder="Describe your listing in a few words"
+          required
         ></textarea>
+        <div class="valid-feedback">Description Looks good!</div>
+        <div class="invalid-feedback">Please enter a short description.</div>
       </div>
       <div class="mb-3">
         <label for="image" class="form-label">Image URL : </label>
@@ -39,12 +45,15 @@
         <div class="mb-3 col-md-4">
           <label for="price" class="form-label">Price : </label>
           <input
-            type="number"
             name="listing[price]"
             id="price"
             class="form-control"
             placeholder="Enter the price"
+            required
           />
+          <div class="invalid-feedback">
+        Price should be a valid number.
+      </div>
         </div>
         <div class="mb-3 col-md-8">
           <label for="country" class="form-label">Country : </label>
@@ -54,7 +63,11 @@
             id="country"
             class="form-control"
             placeholder="Enter the country"
+            required
           />
+          <div class="invalid-feedback">
+        Country should be valid.
+      </div>
         </div>
       </div>
 
@@ -66,13 +79,17 @@
           id="location"
           class="form-control"
           placeholder="Enter the location"
+          required
         />
+        <div class="invalid-feedback">
+          Location should be valid.
+      </div>
       </div>
 
       <br />
 
       <button class="btn btn-dark add-btn mt-3">Add</button>
-      <br><br>
+      <br /><br />
     </form>
   </div>
 </div>
